@@ -20,7 +20,7 @@ The probability of lethality is expressed as a **lethality index** over the time
  
 where `stress` is the whale compression stress in Pascals. The values of this logistic model can be found in the results of a strike simulation (`strike` function).  
   
-The `strike` function simulates a collision between a vessel with specific characteristics and a whales with specific characteristics. The model inputs include a vector of time, the state and parameters of the vessel and the whale.  
+The `strike` function simulates a collision between a vessel with specific characteristics and a whale with specific characteristics. The model inputs include a vector of time, the state and parameters of the vessel and the whale.  
   
 `strike(t, state, parms)`  
    
@@ -49,7 +49,7 @@ The function `parameters` controls the parameters of the vessel and whale charac
 |species|"N. Atl. Right Whale"|whale species|
 |lw|13.7 m|whale length (m)|
 |mw|NULL|whale mass (kg) (if not given, it will be estimated from the whale length)|
-|Sw|NULL|whale surface area (m<sup>2</sup>) (if not given, it will be calculate from the whale length|
+|Sw|NULL|whale surface area (m<sup>2</sup>) (if not given, it will be calculated from the whale length|
 |l|default = c(0.025, 0.16, 1.12, 0.1)|vector of 4 of the thickness (m) of skin, blubber, sublayer and bone|
 |a, b|default = 1e6 * c(19.6, 0.255, 0.255, 22.9)|vector of 4 giving values of the stress-strain law ($stress = a*(exp(b*strain)-1)$)|
 |s|default = 1e6 * c(19.6, 0.255, 0.255, 22.9)|vector of 4 giving values of ultimate strength (Pa)|
@@ -93,10 +93,10 @@ P_leth_4kn
 ```r
 ## [1] 0.295065
 ```
-In this simulation, a collision between a adult NARW and a vessel of 45 000 kg going at a speed of 4 knots, would have a 29.5% probability of being lethal.
+In this simulation, a collision between an adult NARW and a vessel of 45 000 kg going at a speed of 4 knots, would have a 29.5% probability of being lethal.
 
-### Quick exmaple - 10 knots
-Let's simulate the same ship and whale, but with a higher travelling speed.
+### Quick example - 10 knots
+Let's simulate the same ship and whale but with a higher travelling speed.
 ```r
 # Initial state of the model
 state <- list(
@@ -113,10 +113,10 @@ results_10kn <- strike(t, state, parms)
 par(mfcol = c(1, 3), mar = c(3.3, 3, 1, 2), mgp = c(2, 0.7, 0), cex = 0.7)
 plot(results_10kn)
 ```
-Now, we can see that the compression is more severe and that the index of lethality goes beyond the 50%.
+Now, we can see that the compression is more severe and that the index of lethality goes beyond 50%.
 ```r
 # Find the maximum probability of lethality from the collision
 P_leth_10kn <- max(lethalityIndexFromStress(results_10kn[["WCF"]][["stress"]]))
 P_leth_10kn
 ```
-In this simulation, a collision between a adult NARW and a vessel of 45 000 kg going at a speed of 10 knots, would have a 69.3% probability of being lethal.
+In this simulation, a collision between an adult NARW and a vessel of 45 000 kg going at a speed of 10 knots, would have a 69.3% probability of being lethal.
