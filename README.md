@@ -1,4 +1,4 @@
-# How to calculate the probability of lethality of a whale-ship collision using {whalestrike}
+# How to calculate the probability of lethality of a whale-ship collision using *whalestrike*
 This tutorial aims to demonstrate how to use the R package [whalestrike](https://joss.theoj.org/papers/10.21105/joss.06473) for risk assessment of vessel strikes, particularly using AIS data.
 
 ## whalestrike R package
